@@ -1,12 +1,18 @@
 doctype html
-html(ng-app)
+html(ng-app='phonecatApp')
     head
         meta(charset='utf-8')
         title Phonecat
         link(rel='stylesheet', href='/css/bootstrap/css/bootstrap.min.css')
         script(src='../node_modules/angular/angular.js')
+        script(src='/js/app.js')
     body
         .row
-            div.col-lg-3
+            .col-lg-4
                 input(ng-model='message')
                 span {{message}}
+            .col-lg-6(ng-controller='PhoneListCtrl')
+                ul
+                    li(ng-repeat='phone in phones')
+                        span {{phone.name}}
+                        p {{phone.snippet}}
