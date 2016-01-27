@@ -6,13 +6,17 @@ html(ng-app='phonecatApp')
         link(rel='stylesheet', href='/css/bootstrap/css/bootstrap.min.css')
         script(src='../node_modules/angular/angular.js')
         script(src='/js/app.js')
+        script(src='/js/controllers/PhoneListController.js')
     body
-        .row
-            .col-lg-4
-                input(ng-model='message')
-                span {{message}}
-            .col-lg-6(ng-controller='PhoneListCtrl')
-                ul
-                    li(ng-repeat='phone in phones')
-                        span {{phone.name}}
-                        p {{phone.snippet}}
+        .container-fluid(ng-controller='PhoneListCtrl')
+            .row
+                .col-lg-4
+                    input(ng-model='query')
+                    select(ng-model='orderProp')
+                        option(value='name') Alphabetical
+                        option(value='age') Age
+                .col-lg-6
+                    ul
+                        li(ng-repeat='phone in phones | filter: query | orderBy: orderProp')
+                            span {{phone.name}}
+                            p {{phone.snippet}}
