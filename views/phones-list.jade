@@ -1,0 +1,15 @@
+.container-fluid(ng-controller='PhoneListCtrl')
+    .row
+        .col-lg-4
+            input(ng-model='query')
+            select(ng-model='orderProp')
+                option(value='name') Alphabetical
+                option(value='age') Age
+        .col-lg-6
+            ul.phones
+                li.thumbnail(ng-repeat='phone in phones | filter: query | orderBy: orderProp')
+                    a(href='#/phones/{{phone.id}}') {{phone.name}}
+                    a.thumb(href='#/phones/{{phone.id}}')
+                        img(ng-src='{{phone.imageUrl}}', alt='{{phone.name}}')
+                    span {{phone.name}}
+                    p {{phone.snippet}}
