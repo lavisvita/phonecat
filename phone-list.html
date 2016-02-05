@@ -1,0 +1,26 @@
+<div ng-controller="PhoneListCtrl" class="container-fluid">
+    <hr>
+    <span test></span>
+    <hr>
+    <form>
+        <input type="text" ng-model="nameOfTag" >
+        <input type="submit" ng-click="sendTagName(nameOfTag)">
+     </form>
+    <!--{{sendTagName(nameOfTag)}}-->
+    <div class="row">
+        <div class="col-lg-4">
+            <input ng-model="query"/>
+            <select ng-model="orderProp">
+                <option value="name">Alphabetical</option>
+                <option value="age">Age</option>
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <ul class="phones">
+                <li ng-repeat="phone in phones | filter: query | orderBy: orderProp" class="thumbnail"><a href="#/phones/{{phone.id}}">{{phone.name}}</a><a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}"/></a><span>{{phone.name}}</span>
+                    <p>{{phone.snippet}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

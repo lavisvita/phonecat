@@ -1,0 +1,6 @@
+<ul>
+    <li class="newtag" ng-repeat="teg in tegs track by $index">
+        {{teg.tegname}}
+        <span class="delete-teg" ng-click="deleteTeg($index)">x</span>
+    </li>
+</ul>
